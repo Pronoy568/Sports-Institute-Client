@@ -5,20 +5,20 @@ import logo from "../../../assets/logo/logo3.png";
 const NavBar = () => {
   const navOptions = (
     <>
-      <li>
+      <li className="mx-2">
         <Link to="/">Home</Link>
       </li>
-      <li>
+      <li className="mx-2">
         <Link to="/instructors">Instructors</Link>
       </li>
-      <li>
+      <li className="mx-2">
         <Link to="/class">Class</Link>
       </li>
-      <li>
+      <li className="mx-2">
         <Link to="/login">Login</Link>
       </li>
-      <li>
-        <Link>Logout</Link>
+      <li className="mx-2">
+        <Link to="/register">Register</Link>
       </li>
     </>
   );
