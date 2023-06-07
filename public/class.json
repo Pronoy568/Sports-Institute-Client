@@ -1,0 +1,83 @@
+[
+  {
+    "id": 1,
+    "className": "Football",
+    "instructorName": "Alex Ferguson",
+    "img": "https://i.ibb.co/sgmqBmh/football.jpg",
+    "availableSeats": 10,
+    "numberStudent": 15,
+    "price": 15.99
+  },
+  {
+    "id": 2,
+    "className": "Cricket",
+    "instructorName": "Gary Kirsten",
+    "img": "https://i.ibb.co/XpshmBV/cricket.jpg",
+    "availableSeats": 15,
+    "numberStudent": 20,
+    "price": 12.99
+  },
+  {
+    "id": 3,
+    "className": "Badminton",
+    "instructorName": "Li Yongbo",
+    "img": "https://i.ibb.co/M2NRM7T/banner2.pngs",
+    "availableSeats": 8,
+    "numberStudent": 10,
+    "price": 20.99
+  },
+  {
+    "id": 4,
+    "className": "Hockey",
+    "instructorName": "Ric Charlesworth",
+    "img": "https://i.ibb.co/dbkmqbR/banner5.png",
+    "availableSeats": 20,
+    "numberStudent": 25,
+    "price": 18.99
+  },
+  {
+    "id": 5,
+    "className": "Baseball",
+    "instructorName": "Joe Maddon",
+    "img": "https://i.ibb.co/vsCkWYS/baseball.jpg",
+    "availableSeats": 12,
+    "numberStudent": 15,
+    "price": 14.99
+  },
+  {
+    "id": 6,
+    "className": "Chess",
+    "instructorName": "Magnus Carlsen",
+    "img": "https://i.ibb.co/THq8Rtz/banner8.png",
+    "availableSeats": 7,
+    "numberStudent": 10,
+    "price": 14.99
+  },
+  {
+    "id": 7,
+    "className": "Basketball",
+    "instructorName": "Phil Jackson",
+    "img": "https://i.ibb.co/tBqpz8r/basketball.jpg",
+    "availableSeats": 8,
+    "numberStudent": 15,
+    "price": 18.99
+  },
+  {
+    "id": 8,
+    "className": "Boxing",
+    "instructorName": "Eddie Futch",
+    "img": "https://i.ibb.co/XSWZdZJ/boxing.jpg",
+    "availableSeats": 11,
+    "numberStudent": 15,
+    "price": 14.99
+  },
+  {
+    "id": 9,
+    "className": "Yoga",
+    "instructorName": "B.K.S. Iyengar",
+    "img": "https://i.ibb.co/xg4K2Gr/yoga1.jpg",
+    "availableSeats": 12,
+    "numberStudent": 10,
+    "price": 14.99
+  }
+]
