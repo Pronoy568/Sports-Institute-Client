@@ -103,7 +103,7 @@ const NavBar = () => {
             </ul>
           </div>
           <div className="ms-6 md:ms-0">
-            <Link>
+            <Link to="/">
               <img className="rounded" src={logo} alt="logo" />
             </Link>
           </div>
