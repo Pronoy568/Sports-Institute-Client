@@ -3,11 +3,14 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-// import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import img from "../../../assets/authentication/register.jpg";
+import Google from "../Google/Google";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [match, setMatch] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -65,6 +68,14 @@ const Register = () => {
     });
   };
 
+  const handleToggle = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleConfirmToggle = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   return (
     <>
       <div className="hero min-h-screen bg-slate-50">
@@ -111,17 +122,35 @@ const Register = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="password"
                   name="password"
+                  className="input input-bordered"
                   {...register("password", {
                     required: true,
                     minLength: 6,
                     maxLength: 20,
                     pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[a-z])/,
                   })}
-                  className="input input-bordered"
                 />
+                <p
+                  className="relative -top-8 md:left-72 left-44 text-gray-400"
+                  checked={showPassword}
+                  onClick={handleToggle}
+                >
+                  {showPassword ? (
+                    <>
+                      {" "}
+                      <FaEyeSlash />{" "}
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <FaEye />{" "}
+                    </>
+                  )}
+                </p>
+
                 {errors.password?.type === "required" && (
                   <p className="text-red-600">Password is required</p>
                 )}
@@ -140,7 +169,7 @@ const Register = () => {
                   <span className="label-text">Confirm Password</span>
                 </label>
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="confirm password"
                   name="confirmPassword"
                   className="input input-bordered"
@@ -148,6 +177,23 @@ const Register = () => {
                     required: true,
                   })}
                 />
+                <p
+                  className="relative -top-8 md:left-72 left-44 text-gray-400"
+                  checked={showConfirmPassword}
+                  onClick={handleConfirmToggle}
+                >
+                  {showConfirmPassword ? (
+                    <>
+                      {" "}
+                      <FaEyeSlash />{" "}
+                    </>
+                  ) : (
+                    <>
+                      {" "}
+                      <FaEye />{" "}
+                    </>
+                  )}
+                </p>
                 {match && (
                   <p className="text-red-600">Passwords do not match</p>
                 )}
@@ -178,7 +224,7 @@ const Register = () => {
                 />
               </div>
             </form>
-            <p className="text-right mb-5 px-4 mr-5 -mt-5">
+            <p className="text-right px-4 mr-5 -mt-5">
               <small>
                 Already have a account ?{" "}
                 <Link className="text-blue-700" to="/login">
@@ -187,7 +233,7 @@ const Register = () => {
                 </Link>
               </small>
             </p>
-            {/* <SocialLogin></SocialLogin> */}
+            <Google />
           </div>
         </div>
       </div>

@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo/logo3.png";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import unknown from "../../../assets/unknown/unknown.jpg";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-
+  console.log(user);
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -28,6 +29,32 @@ const NavBar = () => {
 
       {user?.email ? (
         <>
+          <li className="mx-2">
+            {user?.photoURL ? (
+              <>
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={user?.displayName}
+                >
+                  <img
+                    className="w-10 rounded-xl"
+                    src={user?.photoURL}
+                    alt={user?.email}
+                  />
+                </div>
+              </>
+            ) : (
+              <>
+                <div
+                  className="tooltip tooltip-bottom"
+                  data-tip={user?.displayName}
+                >
+                  <img src={unknown} alt={user?.email} />
+                </div>
+              </>
+            )}
+          </li>
+
           <li className="mx-2">
             <button onClick={handleLogOut} className="rounded">
               Logout
