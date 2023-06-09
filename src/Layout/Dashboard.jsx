@@ -11,10 +11,13 @@ import {
   FaWallet,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 const Dashboard = () => {
-  const isAdmin = true;
-  //   const [isAdmin] = useAdmin();
+  // const isAdmin = true;
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
 
   return (
     <div className="drawer lg:drawer-open">
@@ -48,6 +51,8 @@ const Dashboard = () => {
                 </NavLink>
               </li>
             </>
+          ) : isInstructor ? (
+            <li>Show this</li>
           ) : (
             <>
               <li>
@@ -72,7 +77,6 @@ const Dashboard = () => {
               </li>
             </>
           )}
-
           <div className="divider"></div>
           <li>
             <NavLink to="/">

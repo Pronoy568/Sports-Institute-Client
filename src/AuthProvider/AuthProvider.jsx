@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const logOut = () => {
-    setLoading(true);
+    setLoading(false);
     return signOut(auth);
   };
 
@@ -50,7 +50,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
       // get and set token
       if (currentUser) {
         axios
@@ -61,6 +60,7 @@ const AuthProvider = ({ children }) => {
           });
       } else {
         localStorage.removeItem("access_token");
+        setLoading(false);
       }
     });
 

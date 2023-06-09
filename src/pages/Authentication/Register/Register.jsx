@@ -1,11 +1,11 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import img from "../../../assets/authentication/register.jpg";
 import Google from "../Google/Google";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import useAuth from "../../../hooks/useAuth";
 
 const Register = () => {
   const [match, setMatch] = useState("");
@@ -17,7 +17,7 @@ const Register = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {

@@ -11,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminHome from "../DashboardPages/Admin/AdminHome/AdminHome";
 import UserHome from "../DashboardPages/User/UserHome/UserHome";
 import ManageUser from "../DashboardPages/Admin/ManageUser/ManageUser";
+import InstructorHome from "../DashboardPages/Instructor/InstructorHome/InstructorHome";
 
 const Routes = createBrowserRouter([
   {
@@ -49,7 +50,11 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "userHome",
-        element: <UserHome></UserHome>,
+        element: (
+          // <PrivateRoute>
+          <UserHome></UserHome>
+          // </PrivateRoute>
+        ),
       },
       {
         path: "manageUser",
@@ -61,6 +66,15 @@ const Routes = createBrowserRouter([
         element: (
           // <AdminRoute>
           <AdminHome></AdminHome>
+          // </AdminRoute>
+        ),
+      },
+      // instructor routes
+      {
+        path: "instructorHome",
+        element: (
+          // <AdminRoute>
+          <InstructorHome></InstructorHome>
           // </AdminRoute>
         ),
       },

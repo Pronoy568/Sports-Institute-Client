@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo/logo3.png";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import unknown from "../../../assets/unknown/unknown.jpg";
+import useAuth from "../../../hooks/useAuth";
+import useAdmin from "../../../hooks/useAdmin";
+import useInstructor from "../../../hooks/useInstructor";
 
 const NavBar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  const { user, logOut } = useAuth();
   const handleLogOut = () => {
     logOut()
       .then(() => {})
@@ -14,7 +15,10 @@ const NavBar = () => {
         console.log(error);
       });
   };
-  const isAdmin = true;
+
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
+
   const navOptions = (
     <>
       <li className="mx-2">
@@ -27,7 +31,15 @@ const NavBar = () => {
         <Link to="/class">Class</Link>
       </li>
       <li>
-        <Link to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}>
+        <Link
+          to={
+            isAdmin
+              ? "/dashboard/adminHome"
+              : isInstructor
+              ? "/dashboard/instructorHome"
+              : "/dashboard/userHome"
+          }
+        >
           Dashboard
         </Link>
       </li>

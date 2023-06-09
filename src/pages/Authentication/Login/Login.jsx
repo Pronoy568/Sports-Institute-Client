@@ -1,17 +1,16 @@
-import React, { useContext, useState } from "react";
-import { AuthContext } from "../../../AuthProvider/AuthProvider";
+import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useForm } from "react-hook-form";
 import img from "../../../assets/authentication/login.jpg";
 import Google from "../Google/Google";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-// import SocialLogin from "../Shared/SocialLogin/SocialLogin";
+import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const { signIn } = useContext(AuthContext);
+  const { signIn } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const {

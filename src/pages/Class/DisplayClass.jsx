@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import useSelectedClass from "../../hooks/useSelectedClass";
-import { AuthContext } from "../../AuthProvider/AuthProvider";
+import useAuth from "../../hooks/useAuth";
 
 const DisplayClass = ({ Class }) => {
   const {
@@ -13,7 +13,7 @@ const DisplayClass = ({ Class }) => {
     price,
     _id,
   } = Class;
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const [, refetch] = useSelectedClass();
   const navigate = useNavigate();
   const location = useLocation();
