@@ -31,38 +31,32 @@ const Register = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      Swal.fire({
-        title: "SignUp SuccessFully",
-        position: "center",
-        icon: "success",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+
       updateUserProfile(data.name, data.photoURL)
         .then(() => {
           reset();
-          navigate("/");
-          // const saveUser = { name: data.name, email: data.email };
-          // fetch(`http://localhost:4000/users`, {
-          //   method: "POST",
-          //   headers: {
-          //     "content-type": "application/json",
-          //   },
-          //   body: JSON.stringify(saveUser),
-          // })
-          //   .then((res) => res.json())
-          //   .then((data) => {
-          //     if (data.insertedId) {
-          //       reset();
-          //       Swal.fire({
-          //         title: "Updated SuccessFully",
-          //         position: "center",
-          //         showConfirmButton: false,
-          //         timer: 3000,
-          //       });
-          //       navigate("/");
-          //     }
-          //   });
+          const saveUser = { name: data.name, email: data.email };
+          fetch(`http://localhost:5000/users`, {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(saveUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  title: "SignUp SuccessFully",
+                  position: "center",
+                  icon: "success",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            });
         })
         .catch((err) => console.log(err));
     });

@@ -6,6 +6,11 @@ import Instructors from "../pages/Instructors/Instructors";
 import Class from "../pages/Class/Class";
 import Login from "../pages/Authentication/Login/Login";
 import Register from "../pages/Authentication/Register/Register";
+import Dashboard from "../Layout/Dashboard";
+import PrivateRoute from "./PrivateRoute";
+import AdminHome from "../DashboardPages/Admin/AdminHome/AdminHome";
+import UserHome from "../DashboardPages/User/UserHome/UserHome";
+import ManageUser from "../DashboardPages/User/ManageUser/ManageUser";
 
 const Routes = createBrowserRouter([
   {
@@ -31,6 +36,33 @@ const Routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "userHome",
+        element: <UserHome></UserHome>,
+      },
+      {
+        path: "manageUser",
+        element: <ManageUser></ManageUser>,
+      },
+      // admin routes
+      {
+        path: "adminHome",
+        element: (
+          // <AdminRoute>
+          <AdminHome></AdminHome>
+          // </AdminRoute>
+        ),
       },
     ],
   },

@@ -14,7 +14,7 @@ const NavBar = () => {
         console.log(error);
       });
   };
-
+  const isAdmin = true;
   const navOptions = (
     <>
       <li className="mx-2">
@@ -26,7 +26,11 @@ const NavBar = () => {
       <li className="mx-2">
         <Link to="/class">Class</Link>
       </li>
-
+      <li>
+        <Link to={isAdmin ? "/dashboard/adminHome" : "/dashboard/userHome"}>
+          Dashboard
+        </Link>
+      </li>
       {user?.email ? (
         <>
           <li className="mx-2">
@@ -49,7 +53,11 @@ const NavBar = () => {
                   className="tooltip tooltip-bottom"
                   data-tip={user?.displayName}
                 >
-                  <img src={unknown} alt={user?.email} />
+                  <img
+                    className="w-10 rounded-xl"
+                    src={unknown}
+                    alt={user?.email}
+                  />
                 </div>
               </>
             )}
