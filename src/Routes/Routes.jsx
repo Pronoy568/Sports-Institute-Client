@@ -10,7 +10,7 @@ import Dashboard from "../Layout/Dashboard";
 import PrivateRoute from "./PrivateRoute";
 import AdminHome from "../DashboardPages/Admin/AdminHome/AdminHome";
 import UserHome from "../DashboardPages/User/UserHome/UserHome";
-import ManageUser from "../DashboardPages/User/ManageUser/ManageUser";
+import ManageUser from "../DashboardPages/Admin/ManageUser/ManageUser";
 
 const Routes = createBrowserRouter([
   {
