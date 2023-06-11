@@ -23,6 +23,7 @@ const AddClass = () => {
       availableSeats,
       numberStudent,
       price,
+      email: user?.email,
     };
 
     // send data to the server

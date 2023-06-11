@@ -15,6 +15,7 @@ import InstructorHome from "../DashboardPages/Instructor/InstructorHome/Instruct
 import SelectedClass from "../DashboardPages/User/SelectedClass/SelectedClass";
 import Payment from "../DashboardPages/User/Payment/Payment";
 import AddClass from "../DashboardPages/Instructor/AddClass/AddClass";
+import MyClass from "../DashboardPages/Instructor/MyClass/MyClass";
 
 const Routes = createBrowserRouter([
   {
@@ -88,6 +89,10 @@ const Routes = createBrowserRouter([
       {
         path: "addClass",
         element: <AddClass></AddClass>,
+      },
+      {
+        path: "myClass",
+        element: <MyClass></MyClass>,
       },
     ],
   },
