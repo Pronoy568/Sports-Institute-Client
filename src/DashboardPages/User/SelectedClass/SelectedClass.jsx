@@ -36,7 +36,6 @@ const selectedClass = () => {
     <div className="w-11/12 mx-auto">
       <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
         <h3 className="text-3xl">Total class: {selectedClass.length}</h3>
-        <h3 className="text-3xl">Total Price: ${total.toFixed(2)}</h3>
       </div>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">

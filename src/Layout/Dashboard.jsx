@@ -86,6 +86,11 @@ const Dashboard = () => {
                   <FaWallet></FaWallet> Enrolled Class
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/paymentHistory">
+                  <FaWallet></FaWallet> Payment History
+                </NavLink>
+              </li>
             </>
           )}
           <div className="divider"></div>

@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useSelectedClass from "../../../hooks/useSelectedClass";
 import { ImSpinner10 } from "react-icons/Im";
 import SectionTitle from "../../../components/SectionTitle";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ selectedPayment }) => {
   const { user } = useAuth();
@@ -18,8 +19,8 @@ const CheckoutForm = ({ selectedPayment }) => {
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
   const [selectedClass] = useSelectedClass();
+  const navigate = useNavigate();
   const { _id, price, img, className, availableSeats } = selectedPayment;
-  //   todo
   const payPrice = price;
 
   useEffect(() => {
@@ -96,7 +97,6 @@ const CheckoutForm = ({ selectedPayment }) => {
       axiosSecure.post("/payments", payment).then((res) => {
         if (res.data.result.insertedId) {
           // display confirm
-          setProcessing(false);
           Swal.fire({
             position: "center",
             icon: "success",
@@ -104,6 +104,8 @@ const CheckoutForm = ({ selectedPayment }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+          setProcessing(false);
+          navigate("/dashboard/enrolledClass", { replace: true });
         }
       });
     }

@@ -93,7 +93,9 @@ const DisplayClass = ({ Class }) => {
             <span className="font-semibold">Total Student:</span>{" "}
             {numberStudent}
           </p>
-          <p className="text-xl">
+          <p
+            className={availableSeats == 0 ? "text-xl text-red-500" : "text-xl"}
+          >
             <span className="font-semibold">AvailableSeats:</span>{" "}
             {availableSeats}
           </p>
@@ -102,7 +104,7 @@ const DisplayClass = ({ Class }) => {
           </p>
         </div>
         <div className="text-center">
-          {isAdmin || isInstructor ? (
+          {isAdmin || isInstructor || availableSeats == 0 ? (
             <>
               <button className="btn" disabled="disabled">
                 Select

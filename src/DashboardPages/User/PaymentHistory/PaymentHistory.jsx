@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 
-const EnrolledClass = () => {
+const PaymentHistory = () => {
   const [paymentHistory, setPaymentHistory] = useState([]);
   const { user } = useAuth();
 
@@ -16,7 +16,6 @@ const EnrolledClass = () => {
         `http://localhost:5000/payments?email=${user.email}`
       );
       const data = response.data;
-      console.log(data);
       setPaymentHistory(data);
     } catch (error) {
       console.error(error);
@@ -25,7 +24,7 @@ const EnrolledClass = () => {
 
   return (
     <div className="w-11/12 mx-auto">
-      <h1 className="text-center font-bold text-4xl my-10">Enrolled Class</h1>
+      <h1 className="text-center font-bold text-4xl my-10">Payment History</h1>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}
@@ -34,7 +33,7 @@ const EnrolledClass = () => {
               <th>#</th>
               <th>Class Name</th>
               <th>Price</th>
-              <th>Date</th>
+              <th>TransactionId</th>
             </tr>
           </thead>
           <tbody>
@@ -53,7 +52,7 @@ const EnrolledClass = () => {
                   </div>
                 </td>
                 <td>${payment.price}</td>
-                <td>{payment.date}</td>
+                <td>{payment.transactionId}</td>
               </tr>
             ))}
           </tbody>
@@ -63,4 +62,4 @@ const EnrolledClass = () => {
   );
 };
 
-export default EnrolledClass;
+export default PaymentHistory;
