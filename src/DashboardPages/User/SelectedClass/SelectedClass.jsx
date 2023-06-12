@@ -64,7 +64,12 @@ const selectedClass = () => {
                 </td>
                 <td>${item.price}</td>
                 <td>
-                  <Link to="/dashboard/payment">
+                  <Link
+                    to={{
+                      pathname: `/dashboard/payment/${item._id}`,
+                      state: { selectedClassItem: item },
+                    }}
+                  >
                     <button className="btn btn-warning btn-sm">PAY</button>
                   </Link>
                 </td>

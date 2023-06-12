@@ -5,8 +5,10 @@ import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useSelectedClass from "../../../hooks/useSelectedClass";
+import { ImSpinner10 } from "react-icons/Im";
+import SectionTitle from "../../../components/SectionTitle";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ selectedPayment }) => {
   const { user } = useAuth();
   const stripe = useStripe();
   const elements = useElements();
@@ -15,9 +17,10 @@ const CheckoutForm = () => {
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
-  const [selectedClass, refetch] = useSelectedClass();
+  const [selectedClass] = useSelectedClass();
+  const { _id, price, img, className, availableSeats } = selectedPayment;
   //   todo
-  const payPrice = 100;
+  const payPrice = price;
 
   useEffect(() => {
     if (payPrice) {
@@ -76,20 +79,21 @@ const CheckoutForm = () => {
     setProcessing(false);
 
     if (paymentIntent.status === "succeeded") {
+      setTransactionId(paymentIntent.id);
       // save payment info
       const payment = {
         email: user?.email,
         transactionId: paymentIntent.id,
-        price: payPrice,
+        _id,
+        className,
+        img,
+        price,
+        availableSeats,
         date: new Date(),
-        // quantity: cart.length,
+        selectedPayment,
         selectedClass: selectedClass.map((item) => item._id),
-        // menuItems: cart.map((item) => item.menuItemId),
-        // status: "service pending",
-        // itemNames: cart.map((item) => item.name),
       };
       axiosSecure.post("/payments", payment).then((res) => {
-        console.log(res);
         if (res.data.result.insertedId) {
           // display confirm
           setProcessing(false);
@@ -108,6 +112,12 @@ const CheckoutForm = () => {
 
   return (
     <div>
+      <div className="text-center">
+        <h1 className="text-3xl font-extrabold my-4">{`Payment for ${className} Class`}</h1>
+        <img className="w-2/4 mx-auto rounded" src={img} alt={className} />
+        <h1 className="text-xl">Price: ${price}</h1>
+      </div>
+      <SectionTitle heading="Payment"></SectionTitle>
       <form onSubmit={handleSubmit}>
         <CardElement
           options={{
@@ -131,15 +141,19 @@ const CheckoutForm = () => {
           type="submit"
           disabled={!stripe || processing || !clientSecret}
         >
-          Pay
+          {processing ? (
+            <ImSpinner10 className="m-auto animate-spin" size={24} />
+          ) : (
+            `Pay $${price}`
+          )}
         </button>
       </form>
       {cardError && <p className="text-red-500 ml-8">{cardError.message}</p>}
-      {/* {transactionId && (
+      {transactionId && (
         <p className="text-green-500 ml-8">
           Transaction complete with transaction ID: {transactionId}
         </p>
-      )} */}
+      )}
     </div>
   );
 };

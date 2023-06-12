@@ -63,7 +63,7 @@ const Routes = createBrowserRouter([
         element: <SelectedClass></SelectedClass>,
       },
       {
-        path: "payment",
+        path: "payment/:id",
         element: <Payment></Payment>,
       },
       {
