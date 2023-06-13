@@ -5,6 +5,7 @@ import unknown from "../../../assets/unknown/unknown.jpg";
 import useAuth from "../../../hooks/useAuth";
 import useAdmin from "../../../hooks/useAdmin";
 import useInstructor from "../../../hooks/useInstructor";
+import "./Navbar.css";
 
 const NavBar = () => {
   const { user, logOut } = useAuth();
@@ -104,7 +105,7 @@ const NavBar = () => {
   );
 
   return (
-    <div>
+    <div className="navbar-container mt-5">
       <div className="navbar h-28 bg-white justify-around">
         <div className="navbar-start md:w-1/4 md:mx-auto">
           <div className="dropdown">

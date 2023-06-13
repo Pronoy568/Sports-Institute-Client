@@ -1,23 +1,35 @@
 import React from "react";
 import {
   FaArrowAltCircleLeft,
-  FaBook,
   FaCalendarAlt,
-  FaEgg,
   FaHome,
-  FaShoppingCart,
   FaUser,
-  FaUtensils,
   FaWallet,
+  FaHourglassStart,
 } from "react-icons/fa";
+import { FcManager } from "react-icons/fc";
+import { HiCash } from "react-icons/hi";
+import { RiFileAddFill } from "react-icons/ri";
+import { GiTeacher } from "react-icons/gi";
+import { MdOutlineClass } from "react-icons/md";
+import { AiOutlineLogout } from "react-icons/ai";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import useAuth from "../hooks/useAuth";
 
 const Dashboard = () => {
   // const isAdmin = true;
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const { logOut } = useAuth();
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .then((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="drawer lg:drawer-open">
@@ -42,7 +54,7 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/manageClass">
-                  <FaUtensils></FaUtensils> Manage Class
+                  <MdOutlineClass></MdOutlineClass> Manage Class
                 </NavLink>
               </li>
               <li>
@@ -60,12 +72,12 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/addClass">
-                  <FaUtensils></FaUtensils> Add Class
+                  <RiFileAddFill></RiFileAddFill> Add Class
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/myClass">
-                  <FaUser></FaUser> My Class
+                  <FcManager></FcManager> My Class
                 </NavLink>
               </li>
             </>
@@ -83,12 +95,12 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/enrolledClass">
-                  <FaWallet></FaWallet> Enrolled Class
+                  <FaHourglassStart></FaHourglassStart> Enrolled Class
                 </NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/paymentHistory">
-                  <FaWallet></FaWallet> Payment History
+                  <HiCash></HiCash> Payment History
                 </NavLink>
               </li>
             </>
@@ -101,7 +113,7 @@ const Dashboard = () => {
           </li>
           <li>
             <NavLink to="/instructors">
-              <FaEgg />
+              <GiTeacher />
               Instructors
             </NavLink>
           </li>
@@ -109,6 +121,11 @@ const Dashboard = () => {
             <NavLink to="/class">
               <FaWallet></FaWallet> Class
             </NavLink>
+          </li>
+          <li>
+            <button onClick={handleLogOut} className="rounded">
+              <AiOutlineLogout></AiOutlineLogout> Logout
+            </button>
           </li>
         </ul>
       </div>

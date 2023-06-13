@@ -1,7 +1,6 @@
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
-import Home from "../pages/Home/Home/Home";
 import Instructors from "../pages/Instructors/Instructors";
 import Class from "../pages/Class/Class";
 import Login from "../pages/Authentication/Login/Login";
@@ -23,7 +22,7 @@ import NotFound from "../pages/Shared/NotFound/NotFound";
 import App from "../pages/Home/Home/App";
 import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
-import InstructorShow from "../pages/Home/PopularInstructors/InstructorShow";
+import UserRoute from "./UserRoute";
 
 const Routes = createBrowserRouter([
   {
@@ -63,23 +62,43 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "userHome",
-        element: <UserHome></UserHome>,
+        element: (
+          <UserRoute>
+            <UserHome></UserHome>
+          </UserRoute>
+        ),
       },
       {
         path: "selectedClass",
-        element: <SelectedClass></SelectedClass>,
+        element: (
+          <UserRoute>
+            <SelectedClass></SelectedClass>
+          </UserRoute>
+        ),
       },
       {
         path: "payment/:id",
-        element: <Payment></Payment>,
+        element: (
+          <UserRoute>
+            <Payment></Payment>
+          </UserRoute>
+        ),
       },
       {
         path: "enrolledClass",
-        element: <EnrolledClass></EnrolledClass>,
+        element: (
+          <UserRoute>
+            <EnrolledClass></EnrolledClass>
+          </UserRoute>
+        ),
       },
       {
         path: "paymentHistory",
-        element: <PaymentHistory></PaymentHistory>,
+        element: (
+          <UserRoute>
+            <PaymentHistory></PaymentHistory>
+          </UserRoute>
+        ),
       },
       // admin routes
       {

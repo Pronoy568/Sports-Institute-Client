@@ -18,7 +18,7 @@ const Google = () => {
         email: loggedInUser.email,
       };
 
-      fetch(`http://localhost:5000/users`, {
+      fetch(`https://sports-institute-server.vercel.app/users`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

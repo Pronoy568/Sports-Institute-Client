@@ -9,7 +9,7 @@ const PopularClass = () => {
   // const [popularClass, setPopularClass] = useState([]);
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/allClass")
+  //   fetch("https://sports-institute-server.vercel.app/allClass")
   //     .then((res) => res.json())
   //     .then((data) => setPopularClass(data));
   // }, []);
@@ -19,7 +19,7 @@ const PopularClass = () => {
       <SectionTitle heading={"Popular Class"}></SectionTitle>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {allClass.slice(0, 6).map((Class) => (
-          <ClassShow key={Class.id} Class={Class}></ClassShow>
+          <ClassShow key={Class._id} Class={Class}></ClassShow>
         ))}
       </div>
     </div>

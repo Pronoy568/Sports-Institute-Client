@@ -10,7 +10,9 @@ const useClass = () => {
   } = useQuery({
     queryKey: ["allClass"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/allClass`);
+      const res = await fetch(
+        `https://sports-institute-server.vercel.app/allClass`
+      );
       return res.json();
     },
   });

@@ -35,7 +35,7 @@ const DisplayClass = ({ Class }) => {
         availableSeats,
         email: user.email,
       };
-      fetch("http://localhost:5000/selectedClass", {
+      fetch("https://sports-institute-server.vercel.app/selectedClass", {
         method: "POST",
         headers: {
           "content-type": "application/json",

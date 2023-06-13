@@ -13,7 +13,7 @@ const EnrolledClass = () => {
   const fetchPaymentHistory = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/payments?email=${user.email}`
+        `https://sports-institute-server.vercel.app/payments?email=${user.email}`
       );
       const data = response.data;
       console.log(data);

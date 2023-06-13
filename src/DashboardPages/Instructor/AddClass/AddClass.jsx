@@ -1,9 +1,13 @@
 import React from "react";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddClass = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const handleAddClass = (event) => {
     event.preventDefault();
 
@@ -27,7 +31,7 @@ const AddClass = () => {
     };
 
     // send data to the server
-    fetch("http://localhost:5000/allClass", {
+    fetch("https://sports-institute-server.vercel.app/allClass", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,8 +45,9 @@ const AddClass = () => {
             title: "Success!",
             text: "Added Successfully Done",
             icon: "success",
-            confirmButtonText: "Cool",
+            confirmButtonText: "Ok",
           });
+          navigate("/dashboard/myClass", { state: { from: location } });
         }
       });
   };
@@ -63,6 +68,7 @@ const AddClass = () => {
                 placeholder="Class Name"
                 name="name"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -76,6 +82,7 @@ const AddClass = () => {
                 placeholder="Class Image"
                 name="image"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -121,6 +128,7 @@ const AddClass = () => {
                 placeholder="Available Seats"
                 name="availableSeats"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -134,6 +142,7 @@ const AddClass = () => {
                 placeholder="Total Student"
                 name="numberStudent"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
@@ -149,6 +158,7 @@ const AddClass = () => {
                 placeholder="Price"
                 name="price"
                 className="input input-bordered w-full"
+                required
               />
             </label>
           </div>
