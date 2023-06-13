@@ -19,11 +19,13 @@ import MyClass from "../DashboardPages/Instructor/MyClass/MyClass";
 import ManageClass from "../DashboardPages/Admin/ManageClass/ManageClass";
 import EnrolledClass from "../DashboardPages/User/EnrolledClass/EnrolledClass";
 import PaymentHistory from "../DashboardPages/User/PaymentHistory/PaymentHistory";
+import NotFound from "../pages/Shared/NotFound/NotFound";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -78,11 +80,7 @@ const Routes = createBrowserRouter([
       // admin routes
       {
         path: "adminHome",
-        element: (
-          // <AdminRoute>
-          <AdminHome></AdminHome>
-          // </AdminRoute>
-        ),
+        element: <AdminHome></AdminHome>,
       },
       {
         path: "manageUser",
@@ -95,11 +93,7 @@ const Routes = createBrowserRouter([
       // instructor routes
       {
         path: "instructorHome",
-        element: (
-          // <AdminRoute>
-          <InstructorHome></InstructorHome>
-          // </AdminRoute>
-        ),
+        element: <InstructorHome></InstructorHome>,
       },
       {
         path: "addClass",

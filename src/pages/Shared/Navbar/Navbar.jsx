@@ -45,7 +45,16 @@ const NavBar = () => {
       </li>
       {user?.email ? (
         <>
-          <li className="mx-2">
+          <Link
+            to={
+              isAdmin
+                ? "/dashboard/adminHome"
+                : isInstructor
+                ? "/dashboard/instructorHome"
+                : "/dashboard/userHome"
+            }
+            className="mx-5"
+          >
             {user?.photoURL ? (
               <>
                 <div
@@ -73,7 +82,7 @@ const NavBar = () => {
                 </div>
               </>
             )}
-          </li>
+          </Link>
 
           <li className="mx-2">
             <button onClick={handleLogOut} className="rounded">

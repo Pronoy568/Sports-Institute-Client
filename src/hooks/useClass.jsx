@@ -8,11 +8,9 @@ const useClass = () => {
     isLoading: loading,
     refetch,
   } = useQuery({
-    queryKey: ["allClass", user?.email],
+    queryKey: ["allClass"],
     queryFn: async () => {
-      const res = await fetch(
-        `http://localhost:5000/allClass?email=${user?.email}`
-      );
+      const res = await fetch(`http://localhost:5000/allClass`);
       return res.json();
     },
   });
