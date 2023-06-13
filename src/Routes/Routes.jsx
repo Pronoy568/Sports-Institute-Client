@@ -20,6 +20,7 @@ import ManageClass from "../DashboardPages/Admin/ManageClass/ManageClass";
 import EnrolledClass from "../DashboardPages/User/EnrolledClass/EnrolledClass";
 import PaymentHistory from "../DashboardPages/User/PaymentHistory/PaymentHistory";
 import NotFound from "../pages/Shared/NotFound/NotFound";
+import App from "../pages/Home/Home/App";
 
 const Routes = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const Routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <App />,
       },
       {
         path: "/instructors",
