@@ -21,6 +21,9 @@ import EnrolledClass from "../DashboardPages/User/EnrolledClass/EnrolledClass";
 import PaymentHistory from "../DashboardPages/User/PaymentHistory/PaymentHistory";
 import NotFound from "../pages/Shared/NotFound/NotFound";
 import App from "../pages/Home/Home/App";
+import AdminRoute from "./AdminRoute";
+import InstructorRoute from "./InstructorRoute";
+import InstructorShow from "../pages/Home/PopularInstructors/InstructorShow";
 
 const Routes = createBrowserRouter([
   {
@@ -81,28 +84,52 @@ const Routes = createBrowserRouter([
       // admin routes
       {
         path: "adminHome",
-        element: <AdminHome></AdminHome>,
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageUser",
-        element: <ManageUser></ManageUser>,
+        element: (
+          <AdminRoute>
+            <ManageUser></ManageUser>
+          </AdminRoute>
+        ),
       },
       {
         path: "manageClass",
-        element: <ManageClass></ManageClass>,
+        element: (
+          <AdminRoute>
+            <ManageClass></ManageClass>
+          </AdminRoute>
+        ),
       },
       // instructor routes
       {
         path: "instructorHome",
-        element: <InstructorHome></InstructorHome>,
+        element: (
+          <InstructorRoute>
+            <InstructorHome></InstructorHome>
+          </InstructorRoute>
+        ),
       },
       {
         path: "addClass",
-        element: <AddClass></AddClass>,
+        element: (
+          <InstructorRoute>
+            <AddClass></AddClass>
+          </InstructorRoute>
+        ),
       },
       {
         path: "myClass",
-        element: <MyClass></MyClass>,
+        element: (
+          <InstructorRoute>
+            <MyClass></MyClass>
+          </InstructorRoute>
+        ),
       },
     ],
   },

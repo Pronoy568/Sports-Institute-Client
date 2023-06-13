@@ -3,6 +3,7 @@ import Banner from "../Banner/Banner";
 import PopularClass from "../PopularClass/PopularClass";
 import PopularInstructors from "../PopularInstructors/PopularInstructors";
 import { ThemeContext } from "./ThemeContext";
+import Training from "../Training/Training";
 
 const Home = () => {
   const { theme } = useContext(ThemeContext);
@@ -17,6 +18,7 @@ const Home = () => {
     <div style={containerStyle}>
       <Banner />
       <PopularClass />
+      <Training></Training>
       <PopularInstructors />
     </div>
   );
