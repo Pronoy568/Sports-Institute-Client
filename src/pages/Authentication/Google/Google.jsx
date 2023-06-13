@@ -16,6 +16,7 @@ const Google = () => {
       const saveUser = {
         name: loggedInUser.displayName,
         email: loggedInUser.email,
+        role: "student",
       };
 
       fetch(`https://sports-institute-server.vercel.app/users`, {
